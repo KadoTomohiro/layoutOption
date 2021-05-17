@@ -1,4 +1,4 @@
 export type LayoutOption = {
-  title: string
-  hasConfirm: boolean
+  title?: string
+  hasConfirm?: boolean
 }

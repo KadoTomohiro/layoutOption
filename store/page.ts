@@ -1,13 +1,20 @@
 import { LayoutOption } from '~/types/customOptions'
 
-export const state = (): LayoutOption => ({
-  title: '',
-  hasConfirm: false,
-})
+function defaultLayoutOption(): LayoutOption {
+  return {
+    title: '',
+    hasConfirm: false,
+  }
+}
+
+// Layoutが複数あってオプションが濃っとなる場合、stateに複数のオプションを持たせる。初期化字は全て初期化
+export const state = (): LayoutOption => defaultLayoutOption()
 
 export const mutations = {
-  setLayoutOption(state: LayoutOption, paylod: LayoutOption) {
-    state.title = paylod.title
-    state.hasConfirm = paylod.hasConfirm
+  initialize(state: LayoutOption) {
+    Object.assign(state, defaultLayoutOption())
+  },
+  setLayoutOption(state: LayoutOption, payload: LayoutOption) {
+    Object.assign(state, payload)
   },
 }

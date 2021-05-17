@@ -14,7 +14,6 @@ export default Vue.extend({
   mixins: [
     layoutOptionSetter({
       title: '一覧',
-      hasConfirm: false,
     }),
   ],
   data() {

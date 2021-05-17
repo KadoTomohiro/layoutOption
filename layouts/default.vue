@@ -1,7 +1,10 @@
 <template>
   <div>
     <header>
-      <h1>{{ title }}</h1>
+      <h1>
+        {{ title }}
+      </h1>
+      <NuxtLink to="/">top</NuxtLink>
     </header>
     <Nuxt ref="page" />
     <div v-if="hasConfirm">Confirm</div>
@@ -10,8 +13,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { Context } from '@nuxt/types'
 
 export default Vue.extend({
+  middleware(context: Context) {
+    // Routing発生時にstateを初期化する
+    // Layoutが複数ある場合、アプリ共通のmiddlewareで実行する
+    context.store.commit('page/initialize')
+  },
   computed: {
     title(): string {
       return this.$store.state.page.title

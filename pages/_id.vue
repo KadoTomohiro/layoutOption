@@ -1,5 +1,8 @@
 <template>
-  <div>{{ id }}</div>
+  <div>
+    <div>{{ id }}</div>
+    <NuxtLink to="list">Back</NuxtLink>
+  </div>
 </template>
 
 <script lang="ts">
